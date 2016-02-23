@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}nodejs-%{module_name}
 Version:        0.1.1
-Release:        4%{?dist}
+Release:        6%{?dist}
 Summary:        Creates a duplex stream
 
 License:        MIT
@@ -16,7 +16,7 @@ Source0:        http://registry.npmjs.org/%{module_name}/-/%{module_name}-%{vers
 BuildArch:      noarch
 ExclusiveArch:  %{nodejs_arches} noarch
 
-BuildRequires:  nodejs010-runtime
+BuildRequires:  %{?scl_prefix}runtime
 
 %if 0%{?enable_tests}
 BuildRequires:  %{?scl_prefix}npm(tape)
@@ -50,6 +50,12 @@ node test
 %{nodejs_sitelib}/%{module_name}
 
 %changelog
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 0.1.1-6
+- Use macro in -runtime dependency
+
+* Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 0.1.1-5
+- Rebuilt with updated metapackage
+
 * Thu Jan 14 2016 Tomas Hrcka <thrcka@redhat.com> - 0.1.1-4
 - Enable find provides and requires macro
 
